@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="br.com.grupointegrado.model.Anuncio"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -16,9 +17,9 @@
 
         <script>
             function abrirAnuncio(anuncioId) {
-                window.location = "anuncio.html?anuncio=" + anuncioId;
+                window.location = "anuncio?anuncio=" + anuncioId;
             }
-        </script>
+        </script>          
     </head>
 
     <body>
@@ -32,13 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/GerenciamentoAnuncioVeiculos/index">Início</a>
+                            <a class="nav-link" href="index">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GerenciamentoAnuncioVeiculos/anunciar">Anunciar</a>
+                            <a class="nav-link" href="anunciar">Anunciar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/GerenciamentoAnuncioVeiculos/contato">Contato</a>
+                            <a class="nav-link" href="contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -180,21 +181,37 @@
                                     </div>
                                 </td>
                             </tr>
-                            <%  int ContadorAnuncio = 1;
-                                //for(Anuncio obj : p){ //p suposto obj da requisição %>
-                            <tr class="tabela-veiculos-linha" onclick="abrirAnuncio(<%ContadorAnuncio%>)">
+
+                            <% List<Anuncio> reqObj = (List<Anuncio>) request.getAttribute("anuncios");
+                                int ContadorAnuncio = 5;
+                                if(reqObj != null){
+                                for (int i = 0; i < reqObj.size(); i++) {
+                                    Anuncio obj = reqObj.get(i);%>
+                            <tr class="tabela-veiculos-linha" onclick="abrirAnuncio(ContadorAnuncio)">
                                 <td class="tv-col-imagem">
-                                    <img src="<% //PATH% + //VarExt%>">                                     
+                                    <img src="IMG/<%= obj.getCaminho()%>">
                                 </td>
-                            <div class="col descricao-anuncio">
-                                <p>
-                                    <% //Nome + KM %>| <% //TipoCambio%> | <%//Combu¨%>   
-                                </p>
-                            </div>
-                            
-                            </tr>
-
-
+                                <td class="informacoes-anuncio">
+                                    <div class="row">
+                                        <div class="col descricao-anuncio">
+                                            <p>
+                                                <%=obj.getNome()%> - <%=obj.getKM()%> KM | Câmbio: automático |<%=obj.getTipoCombustivel()%>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-auto valor-anuncio">
+                                            <p><%= obj.getValor()%></p>
+                                        </div>
+                                        <div class="col-sm-auto data-hora-anuncio">
+                                            <p>
+                                                10/09/2018 <br />
+                                                17:55
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>                              
+                            <% ContadorAnuncio++;
+                                }}%>
 
                         </table>
 

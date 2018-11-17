@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>AnuncioServlet</servlet-name>
+        <servlet-name>IndexServlet</servlet-name>
         <servlet-class>br.com.grupointegrado.Servlet.IndexServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AnunciarServlet</servlet-name>
+        <servlet-class>br.com.grupointegrado.Servlet.AnunciarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ContatoServlet</servlet-name>
+        <servlet-class>br.com.grupointegrado.Servlet.ContatoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AnuncioServlet</servlet-name>
+        <servlet-class>br.com.grupointegrado.Servlet.AnuncioServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AnunciarServlet</servlet-name>
+        <url-pattern>/anunciar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContatoServlet</servlet-name>
+        <url-pattern>/contato</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AnuncioServlet</servlet-name>
-        <url-pattern>/anunciar</url-pattern>
+        <url-pattern>/anuncio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
