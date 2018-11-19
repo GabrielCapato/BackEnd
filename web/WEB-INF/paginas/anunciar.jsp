@@ -89,7 +89,7 @@
                 <h3>Preencha os dados do anúncio</h3>
                 <div class="dropdown-divider"></div>
 
-                <form name="form-anunciar" method="POST" action=" ">
+                <form name="form-anunciar" method="POST" action=""> //colocar o caminho do servlet pra pegar o obj.
                     <% Anuncio anun = new Anuncio();%>
                     <div class="form-row">
                         <div class="col-md-8 col-lg-7 col-xl-6">
